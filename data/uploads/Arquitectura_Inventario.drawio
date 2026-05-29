@@ -1,0 +1,168 @@
+<mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <mxCell id="title" value="Sistema de Gestion de Inventario — Arquitectura Completa" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=20;fontStyle=1;fontColor=#1a1a2e;" vertex="1" parent="1">
+      <mxGeometry x="200" y="10" width="1200" height="36" as="geometry" />
+    </mxCell>
+    <mxCell id="subtitle" value="Sistema RAG — IA 2026 — Universidad Mariano Galvez de Guatemala" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=10;fontStyle=2;fontColor=#666666;" vertex="1" parent="1">
+      <mxGeometry x="200" y="44" width="1200" height="18" as="geometry" />
+    </mxCell>
+
+    <!-- CAPA 1: USUARIOS / PRESENTACION -->
+    <mxCell id="L1" value="Capa de Presentacion — Acceso de Usuarios" style="swimlane;startSize=28;fillColor=#DAE8FC;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;fontColor=#1F3864;" vertex="1" parent="1">
+      <mxGeometry x="60" y="80" width="1520" height="120" as="geometry" />
+    </mxCell>
+    <mxCell id="web" value="Portal Web&lt;br&gt;(Navegador)" style="rounded=1;fillColor=#DAE8FC;strokeColor=#6c8ebf;fontSize=10;fontStyle=1;" vertex="1" parent="L1">
+      <mxGeometry x="30" y="38" width="130" height="55" as="geometry" />
+    </mxCell>
+    <mxCell id="mobile" value="App Movil&lt;br&gt;(Bodeguero)" style="rounded=1;fillColor=#DAE8FC;strokeColor=#6c8ebf;fontSize=10;fontStyle=1;" vertex="1" parent="L1">
+      <mxGeometry x="200" y="38" width="130" height="55" as="geometry" />
+    </mxCell>
+    <mxCell id="admin_ui" value="Panel Admin&lt;br&gt;(Administrador)" style="rounded=1;fillColor=#DAE8FC;strokeColor=#6c8ebf;fontSize=10;fontStyle=1;" vertex="1" parent="L1">
+      <mxGeometry x="370" y="38" width="130" height="55" as="geometry" />
+    </mxCell>
+    <mxCell id="reportes_ui" value="Dashboard&lt;br&gt;de Reportes" style="rounded=1;fillColor=#DAE8FC;strokeColor=#6c8ebf;fontSize=10;fontStyle=1;" vertex="1" parent="L1">
+      <mxGeometry x="540" y="38" width="130" height="55" as="geometry" />
+    </mxCell>
+    <mxCell id="alertas_ui" value="Panel de&lt;br&gt;Alertas" style="rounded=1;fillColor=#DAE8FC;strokeColor=#6c8ebf;fontSize=10;fontStyle=1;" vertex="1" parent="L1">
+      <mxGeometry x="710" y="38" width="130" height="55" as="geometry" />
+    </mxCell>
+
+    <!-- CAPA 2: API / ROUTES -->
+    <mxCell id="L2" value="Capa de API REST — Endpoints del Sistema (routes.py)" style="swimlane;startSize=28;fillColor=#D5E8D4;strokeColor=#82b366;fontSize=11;fontStyle=1;fontColor=#1a4d1a;" vertex="1" parent="1">
+      <mxGeometry x="60" y="260" width="1520" height="130" as="geometry" />
+    </mxCell>
+    <mxCell id="r_productos" value="productos_routes.py&lt;br&gt;GET /api/productos&lt;br&gt;POST /api/productos&lt;br&gt;PUT /api/productos/:id" style="rounded=1;fillColor=#D5E8D4;strokeColor=#82b366;fontSize=9;" vertex="1" parent="L2">
+      <mxGeometry x="30" y="35" width="175" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="r_bodegas" value="bodegas_routes.py&lt;br&gt;GET /api/bodegas&lt;br&gt;POST /api/bodegas&lt;br&gt;GET /api/bodegas/:id/stock" style="rounded=1;fillColor=#D5E8D4;strokeColor=#82b366;fontSize=9;" vertex="1" parent="L2">
+      <mxGeometry x="240" y="35" width="175" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="r_movimientos" value="movimientos_routes.py&lt;br&gt;POST /api/movimientos&lt;br&gt;GET /api/movimientos&lt;br&gt;GET /api/movimientos/historial" style="rounded=1;fillColor=#D5E8D4;strokeColor=#82b366;fontSize=9;" vertex="1" parent="L2">
+      <mxGeometry x="450" y="35" width="185" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="r_pedidos" value="pedidos_routes.py&lt;br&gt;POST /api/pedidos&lt;br&gt;PATCH /api/pedidos/:id/estado&lt;br&gt;GET /api/pedidos/:id/detalle" style="rounded=1;fillColor=#D5E8D4;strokeColor=#82b366;fontSize=9;" vertex="1" parent="L2">
+      <mxGeometry x="670" y="35" width="185" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="r_alertas" value="alertas_routes.py&lt;br&gt;GET /api/alertas/activas&lt;br&gt;PATCH /api/alertas/:id/resolver&lt;br&gt;GET /api/alertas/historial" style="rounded=1;fillColor=#D5E8D4;strokeColor=#82b366;fontSize=9;" vertex="1" parent="L2">
+      <mxGeometry x="890" y="35" width="185" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="r_reportes" value="reportes_routes.py&lt;br&gt;GET /api/reportes/stock&lt;br&gt;GET /api/reportes/movimientos&lt;br&gt;GET /api/reportes/valorizado" style="rounded=1;fillColor=#D5E8D4;strokeColor=#82b366;fontSize=9;" vertex="1" parent="L2">
+      <mxGeometry x="1110" y="35" width="185" height="70" as="geometry" />
+    </mxCell>
+
+    <!-- CAPA 3: SERVICIOS -->
+    <mxCell id="L3" value="Capa de Logica de Negocio — Servicios" style="swimlane;startSize=28;fillColor=#FFF2CC;strokeColor=#d6b656;fontSize=11;fontStyle=1;fontColor=#7d6608;" vertex="1" parent="1">
+      <mxGeometry x="60" y="450" width="1520" height="170" as="geometry" />
+    </mxCell>
+    <mxCell id="s_inventario" value="inventario_service.py&lt;br&gt;registrar_entrada()&lt;br&gt;registrar_salida()&lt;br&gt;realizar_traslado()&lt;br&gt;ajustar_stock()&lt;br&gt;obtener_stock_total()" style="rounded=1;fillColor=#FFF2CC;strokeColor=#d6b656;fontSize=9;" vertex="1" parent="L3">
+      <mxGeometry x="30" y="35" width="175" height="110" as="geometry" />
+    </mxCell>
+    <mxCell id="s_productos" value="producto_service.py&lt;br&gt;crear_producto()&lt;br&gt;actualizar_precio()&lt;br&gt;verificar_stock_minimo()&lt;br&gt;buscar_por_categoria()&lt;br&gt;obtener_productos_criticos()" style="rounded=1;fillColor=#FFF2CC;strokeColor=#d6b656;fontSize=9;" vertex="1" parent="L3">
+      <mxGeometry x="240" y="35" width="175" height="110" as="geometry" />
+    </mxCell>
+    <mxCell id="s_pedidos" value="pedido_service.py&lt;br&gt;crear_pedido()&lt;br&gt;confirmar_pedido()&lt;br&gt;recibir_mercaderia()&lt;br&gt;cancelar_pedido()&lt;br&gt;calcular_total()" style="rounded=1;fillColor=#FFF2CC;strokeColor=#d6b656;fontSize=9;" vertex="1" parent="L3">
+      <mxGeometry x="450" y="35" width="175" height="110" as="geometry" />
+    </mxCell>
+    <mxCell id="s_alertas" value="alerta_service.py&lt;br&gt;verificar_stock_minimo()&lt;br&gt;generar_alerta()&lt;br&gt;resolver_alerta()&lt;br&gt;obtener_alertas_criticas()&lt;br&gt;enviar_notificacion()" style="rounded=1;fillColor=#FFF2CC;strokeColor=#d6b656;fontSize=9;" vertex="1" parent="L3">
+      <mxGeometry x="660" y="35" width="175" height="110" as="geometry" />
+    </mxCell>
+    <mxCell id="s_reportes" value="reporte_service.py&lt;br&gt;reporte_stock_general()&lt;br&gt;reporte_movimientos()&lt;br&gt;reporte_valorizado()&lt;br&gt;reporte_proveedores()&lt;br&gt;exportar_excel()" style="rounded=1;fillColor=#FFF2CC;strokeColor=#d6b656;fontSize=9;" vertex="1" parent="L3">
+      <mxGeometry x="870" y="35" width="175" height="110" as="geometry" />
+    </mxCell>
+    <mxCell id="s_auth" value="auth_service.py&lt;br&gt;login()&lt;br&gt;logout()&lt;br&gt;verificar_token()&lt;br&gt;verificar_permisos()&lt;br&gt;cambiar_password()" style="rounded=1;fillColor=#FFF2CC;strokeColor=#d6b656;fontSize=9;" vertex="1" parent="L3">
+      <mxGeometry x="1080" y="35" width="175" height="110" as="geometry" />
+    </mxCell>
+
+    <!-- CAPA 4: MODELOS -->
+    <mxCell id="L4" value="Capa de Modelos — ORM (SQLAlchemy)" style="swimlane;startSize=28;fillColor=#F8CECC;strokeColor=#b85450;fontSize=11;fontStyle=1;fontColor=#6d1a16;" vertex="1" parent="1">
+      <mxGeometry x="60" y="680" width="1520" height="120" as="geometry" />
+    </mxCell>
+    <mxCell id="m_producto" value="Producto&lt;br&gt;id_producto, nombre&lt;br&gt;precio_compra, precio_venta&lt;br&gt;stock_minimo, stock_maximo" style="rounded=1;fillColor=#F8CECC;strokeColor=#b85450;fontSize=9;" vertex="1" parent="L4">
+      <mxGeometry x="30" y="35" width="175" height="65" as="geometry" />
+    </mxCell>
+    <mxCell id="m_bodega" value="Bodega&lt;br&gt;id_bodega, nombre&lt;br&gt;ubicacion, responsable&lt;br&gt;capacidad_maxima" style="rounded=1;fillColor=#F8CECC;strokeColor=#b85450;fontSize=9;" vertex="1" parent="L4">
+      <mxGeometry x="240" y="35" width="175" height="65" as="geometry" />
+    </mxCell>
+    <mxCell id="m_movimiento" value="Movimiento&lt;br&gt;id_movimiento, tipo&lt;br&gt;cantidad, precio_unitario&lt;br&gt;id_producto, id_bodega" style="rounded=1;fillColor=#F8CECC;strokeColor=#b85450;fontSize=9;" vertex="1" parent="L4">
+      <mxGeometry x="450" y="35" width="175" height="65" as="geometry" />
+    </mxCell>
+    <mxCell id="m_pedido" value="PedidoCompra&lt;br&gt;id_pedido, estado&lt;br&gt;fecha_pedido, total&lt;br&gt;id_proveedor, id_bodega" style="rounded=1;fillColor=#F8CECC;strokeColor=#b85450;fontSize=9;" vertex="1" parent="L4">
+      <mxGeometry x="660" y="35" width="175" height="65" as="geometry" />
+    </mxCell>
+    <mxCell id="m_proveedor" value="Proveedor&lt;br&gt;id_proveedor, nombre&lt;br&gt;telefono, email&lt;br&gt;plazo_entrega_dias" style="rounded=1;fillColor=#F8CECC;strokeColor=#b85450;fontSize=9;" vertex="1" parent="L4">
+      <mxGeometry x="870" y="35" width="175" height="65" as="geometry" />
+    </mxCell>
+    <mxCell id="m_alerta" value="Alerta&lt;br&gt;id_alerta, tipo, nivel&lt;br&gt;stock_actual, mensaje&lt;br&gt;id_producto, resuelta" style="rounded=1;fillColor=#F8CECC;strokeColor=#b85450;fontSize=9;" vertex="1" parent="L4">
+      <mxGeometry x="1080" y="35" width="175" height="65" as="geometry" />
+    </mxCell>
+    <mxCell id="m_stock" value="StockBodega&lt;br&gt;id_producto, id_bodega&lt;br&gt;cantidad_disponible&lt;br&gt;cantidad_reservada" style="rounded=1;fillColor=#F8CECC;strokeColor=#b85450;fontSize=9;" vertex="1" parent="L4">
+      <mxGeometry x="1290" y="35" width="175" height="65" as="geometry" />
+    </mxCell>
+
+    <!-- CAPA 5: BASE DE DATOS -->
+    <mxCell id="L5" value="Capa de Persistencia — Base de Datos (MySQL / SQLite)" style="swimlane;startSize=28;fillColor=#E1D5E7;strokeColor=#9673a6;fontSize=11;fontStyle=1;fontColor=#4d1f6d;" vertex="1" parent="1">
+      <mxGeometry x="60" y="860" width="1520" height="100" as="geometry" />
+    </mxCell>
+    <mxCell id="db_prod" value="tabla: productos" style="shape=cylinder3;fillColor=#E1D5E7;strokeColor=#9673a6;fontSize=9;fontStyle=1;" vertex="1" parent="L5">
+      <mxGeometry x="30" y="22" width="130" height="55" as="geometry" />
+    </mxCell>
+    <mxCell id="db_cat" value="tabla: categorias" style="shape=cylinder3;fillColor=#E1D5E7;strokeColor=#9673a6;fontSize=9;fontStyle=1;" vertex="1" parent="L5">
+      <mxGeometry x="195" y="22" width="130" height="55" as="geometry" />
+    </mxCell>
+    <mxCell id="db_bod" value="tabla: bodegas" style="shape=cylinder3;fillColor=#E1D5E7;strokeColor=#9673a6;fontSize=9;fontStyle=1;" vertex="1" parent="L5">
+      <mxGeometry x="360" y="22" width="130" height="55" as="geometry" />
+    </mxCell>
+    <mxCell id="db_prov" value="tabla: proveedores" style="shape=cylinder3;fillColor=#E1D5E7;strokeColor=#9673a6;fontSize=9;fontStyle=1;" vertex="1" parent="L5">
+      <mxGeometry x="525" y="22" width="130" height="55" as="geometry" />
+    </mxCell>
+    <mxCell id="db_usr" value="tabla: usuarios" style="shape=cylinder3;fillColor=#E1D5E7;strokeColor=#9673a6;fontSize=9;fontStyle=1;" vertex="1" parent="L5">
+      <mxGeometry x="690" y="22" width="130" height="55" as="geometry" />
+    </mxCell>
+    <mxCell id="db_mov" value="tabla: movimientos" style="shape=cylinder3;fillColor=#E1D5E7;strokeColor=#9673a6;fontSize=9;fontStyle=1;" vertex="1" parent="L5">
+      <mxGeometry x="855" y="22" width="130" height="55" as="geometry" />
+    </mxCell>
+    <mxCell id="db_stk" value="tabla: stock_bodega" style="shape=cylinder3;fillColor=#E1D5E7;strokeColor=#9673a6;fontSize=9;fontStyle=1;" vertex="1" parent="L5">
+      <mxGeometry x="1020" y="22" width="130" height="55" as="geometry" />
+    </mxCell>
+    <mxCell id="db_ped" value="tabla: pedidos_compra" style="shape=cylinder3;fillColor=#E1D5E7;strokeColor=#9673a6;fontSize=9;fontStyle=1;" vertex="1" parent="L5">
+      <mxGeometry x="1185" y="22" width="140" height="55" as="geometry" />
+    </mxCell>
+    <mxCell id="db_det" value="tabla: detalle_pedido" style="shape=cylinder3;fillColor=#E1D5E7;strokeColor=#9673a6;fontSize=9;fontStyle=1;" vertex="1" parent="L5">
+      <mxGeometry x="1345" y="22" width="140" height="55" as="geometry" />
+    </mxCell>
+
+    <!-- Flechas L1 → L2 -->
+    <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#6c8ebf;strokeWidth=2;" edge="1" source="web" target="r_productos" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#6c8ebf;strokeWidth=2;" edge="1" source="mobile" target="r_movimientos" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#6c8ebf;strokeWidth=2;" edge="1" source="admin_ui" target="r_pedidos" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#6c8ebf;strokeWidth=2;" edge="1" source="reportes_ui" target="r_reportes" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#6c8ebf;strokeWidth=2;" edge="1" source="alertas_ui" target="r_alertas" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+    <!-- Flechas L2 → L3 -->
+    <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#82b366;strokeWidth=2;" edge="1" source="r_movimientos" target="s_inventario" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#82b366;strokeWidth=2;" edge="1" source="r_productos" target="s_productos" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#82b366;strokeWidth=2;" edge="1" source="r_pedidos" target="s_pedidos" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e9" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#82b366;strokeWidth=2;" edge="1" source="r_alertas" target="s_alertas" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e10" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#82b366;strokeWidth=2;" edge="1" source="r_reportes" target="s_reportes" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+    <!-- Flechas L3 → L4 -->
+    <mxCell id="e11" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#d6b656;strokeWidth=2;" edge="1" source="s_inventario" target="m_movimiento" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e12" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#d6b656;strokeWidth=2;" edge="1" source="s_productos" target="m_producto" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e13" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#d6b656;strokeWidth=2;" edge="1" source="s_pedidos" target="m_pedido" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e14" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#d6b656;strokeWidth=2;" edge="1" source="s_alertas" target="m_alerta" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e15" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#d6b656;strokeWidth=2;" edge="1" source="s_inventario" target="m_stock" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+    <!-- Flechas L4 → L5 -->
+    <mxCell id="e16" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#9673a6;strokeWidth=2;" edge="1" source="m_producto" target="db_prod" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e17" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#9673a6;strokeWidth=2;" edge="1" source="m_bodega" target="db_bod" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e18" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#9673a6;strokeWidth=2;" edge="1" source="m_movimiento" target="db_mov" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e19" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#9673a6;strokeWidth=2;" edge="1" source="m_pedido" target="db_ped" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e20" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#9673a6;strokeWidth=2;" edge="1" source="m_proveedor" target="db_prov" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e21" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#9673a6;strokeWidth=2;" edge="1" source="m_alerta" target="db_prod" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="e22" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#9673a6;strokeWidth=2;" edge="1" source="m_stock" target="db_stk" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+  </root>
+</mxGraphModel>
