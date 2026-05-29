@@ -1,3 +1,10 @@
+"""
+Reemplaza ui/app.py con interfaz profesional para presentacion.
+Ejecutar desde rag_software_intelligence:
+  python fix_ui_pro.py
+"""
+
+CONTENT = r'''
 import streamlit as st
 import sys, os, io, tempfile, re
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
@@ -488,3 +495,11 @@ else:
             except Exception as e:
                 st.error("Error: " + str(e))
         st.rerun()
+'''
+
+with open("ui/app.py", "w", encoding="utf-8") as f:
+    f.write(CONTENT.lstrip("\n"))
+
+print("ui/app.py actualizado con interfaz profesional.")
+print("Reinicia Streamlit:")
+print("  streamlit run ui/app.py --server.fileWatcherType none")
